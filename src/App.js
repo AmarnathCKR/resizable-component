@@ -106,9 +106,9 @@ const App = () => {
   
 
   return (<>
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', height: '100vh' }}>
-      <h1>Add Count: {addCount}</h1>
-      <h1>Update Count: {updateCount}</h1>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', }}>
+      <h4>Add Count: {addCount}</h4>
+      <h4>Update Count: {updateCount}</h4>
     </div>
     <div className="app">
       {mode && <Modal
