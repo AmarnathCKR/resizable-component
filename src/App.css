@@ -1,38 +1,175 @@
-.App {
-  text-align: center;
+.app {
+  display: flex;
+
+  align-items: center;
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.resizable-box {
+  border: 1px solid #ccc;
+  padding: 20px;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+ul {
+  list-style: none;
+  padding: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+li {
+  margin-bottom: 5px;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  gap: 0;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+.resizable-box {
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.component {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.component h2 {
+  margin: 0;
+}
+
+.component button {
+  margin: 0;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+.component button:hover {
+  background-color: #45a049;
+}
+
+.component ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.component li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.component li button {
+  padding: 2px 5px;
+  font-size: 12px;
+}
+
+.resizable-box {
+  transition: width 0.2s, height 0.2s;
+}
+
+/* MyModal.css */
+.custom-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.modal-title {
+  margin: 0 0 20px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.input-label {
+  margin-bottom: 5px;
+}
+
+.input-field {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 300px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  max-width: 300px;
+}
+
+.cancel-button,
+.save-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
   color: white;
+  cursor: pointer;
+  font-size: 14px;
 }
 
-.App-link {
-  color: #61dafb;
+.cancel-button {
+  background-color: #f44336;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Media query for responsive sizing */
+@media (min-width: 768px) {
+  .custom-modal {
+    width: 300px; /* Set width for desktop */
+    height: 400px; /* Set height for desktop */
   }
-  to {
-    transform: rotate(360deg);
+
+  .input-field {
+    width: 100%;
+  }
+
+  .button-container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .custom-modal {
+    width: 80%; /* Set width for mobile */
+    max-width: 300px; /* Set max-width for mobile */
+    height: auto; /* Auto height for mobile */
+  }
+
+  .input-field {
+    width: 100%;
+  }
+
+  .button-container {
+    width: 100%;
   }
 }
