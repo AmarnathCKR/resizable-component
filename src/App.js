@@ -30,7 +30,7 @@ const App = () => {
       }).catch((err) => {
         console.log(err)
       })
-    getAnyApi("count").then((res)=>{
+    getAnyApi("count").then((res) => {
       setAddCount(res.data.addCount.length)
       setUpdateCount(res.data.updateCount.length)
     })
@@ -105,7 +105,11 @@ const App = () => {
 
   if (!addCount || !updateCount) return null;
 
-  return (
+  return (<>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', height: '100vh' }}>
+      <h1>Add Count: {addCount}</h1>
+      <h1>Update Count: {updateCount}</h1>
+    </div>
     <div className="app">
       {mode && <Modal
         isOpen={Boolean(mode)}
@@ -128,10 +132,7 @@ const App = () => {
           <button onClick={handleSave} className="save-button">Save</button>
         </div>
       </Modal>}
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', height: '100vh' }}>
-        <h1>Add Count: {addCount}</h1>
-        <h1>Update Count: {updateCount}</h1>
-      </div>
+
       <div className="container">
         <Resizable
           className="resizable-box"
@@ -156,6 +157,7 @@ const App = () => {
         </Resizable>
       </div>
     </div>
+  </>
   );
 };
 
