@@ -34,7 +34,7 @@ const App = () => {
     const initialWidth = screenWidth / 3 - 9;
     const initialSizes = [{ width: initialWidth, height: 500 }, { width: initialWidth, height: 500 }, { width: initialWidth, height: 500 }];
     setSizes(initialSizes);
-  }, [window.innerWidth]);
+  }, []);
 
   const handleResize = (index, width, height) => {
     const newSizes = [...sizes];
