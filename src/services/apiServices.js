@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: "https://localhost:8443/api/v1/",
+    baseURL: "https://resizable-component-server.onrender.com/api/v1/",
 });
 
 
