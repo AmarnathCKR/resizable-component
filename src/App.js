@@ -19,6 +19,9 @@ const App = () => {
 
   const [allData, setAllData] = useState(null);
 
+  const [addCount, setAddCount] = useState(0);
+  const [updateCount, setUpdateCount] = useState(0);
+
   useEffect(() => {
     getAnyApi("")
       .then((response) => {
@@ -27,6 +30,10 @@ const App = () => {
       }).catch((err) => {
         console.log(err)
       })
+    getAnyApi("count").then((res)=>{
+      setAddCount(res.data.addCount.length)
+      setUpdateCount(res.data.updateCount.length)
+    })
   }, [trigger])
 
   useEffect(() => {
@@ -90,11 +97,13 @@ const App = () => {
         setMode(null)
         setInputValue('');
         setTrigger(!trigger)
-      }).catch((err)=>{
+      }).catch((err) => {
         console.log(err)
       })
 
   };
+
+  if (!addCount || !updateCount) return null;
 
   return (
     <div className="app">
@@ -119,27 +128,31 @@ const App = () => {
           <button onClick={handleSave} className="save-button">Save</button>
         </div>
       </Modal>}
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', height: '100vh' }}>
+        <h1>Add Count: {addCount}</h1>
+        <h1>Update Count: {updateCount}</h1>
+      </div>
       <div className="container">
         <Resizable
           className="resizable-box"
           size={sizes[0]}
           onResizeStop={(event, direction, ref, d) => handleResize(0, ref.offsetWidth, ref.offsetHeight)}
         >
-          <Component onAdd={(data) => setMode(data)} onUpdate={(data) => {setMode(data); setInputValue(data.value)}} title="componentOne" data={allData?.componentOne} />
+          <Component onAdd={(data) => setMode(data)} onUpdate={(data) => { setMode(data); setInputValue(data.value) }} title="componentOne" data={allData?.componentOne} />
         </Resizable>
         <Resizable
           className="resizable-box"
           size={sizes[1]}
           onResizeStop={(event, direction, ref, d) => handleResize(1, ref.offsetWidth, ref.offsetHeight)}
         >
-          <Component onAdd={(data) => setMode(data)} onUpdate={(data) => {setMode(data); setInputValue(data.value)}} title="componentTwo" data={allData?.componentTwo} />
+          <Component onAdd={(data) => setMode(data)} onUpdate={(data) => { setMode(data); setInputValue(data.value) }} title="componentTwo" data={allData?.componentTwo} />
         </Resizable>
         <Resizable
           className="resizable-box"
           size={sizes[2]}
           onResizeStop={(event, direction, ref, d) => handleResize(2, ref.offsetWidth, ref.offsetHeight)}
         >
-          <Component onAdd={(data) => setMode(data)} onUpdate={(data) => {setMode(data); setInputValue(data.value)}} title="componentThree" data={allData?.componentThree} />
+          <Component onAdd={(data) => setMode(data)} onUpdate={(data) => { setMode(data); setInputValue(data.value) }} title="componentThree" data={allData?.componentThree} />
         </Resizable>
       </div>
     </div>
